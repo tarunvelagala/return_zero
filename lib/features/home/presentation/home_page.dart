@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:return_zero/features/drawer/presentation/drawer_page.dart';
 import 'package:return_zero/features/home/presentation/widgets/header_widget.dart';
 import 'package:return_zero/features/home/presentation/widgets/instructions_widget.dart';
 import 'package:return_zero/features/home/presentation/widgets/pinned_apps_widget.dart';
@@ -24,6 +25,29 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  void _openDrawerPage(BuildContext context) {
+  Navigator.push(
+    context,
+    PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const DrawerPage(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        // This creates a Slide Up animation
+        const begin = Offset(0.0, 1.0); // Start at bottom
+        const end = Offset.zero;        // End at top
+        const curve = Curves.easeOutCubic;
+
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 300),
+    ),
+  );
+}
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -31,6 +55,11 @@ class HomePage extends StatelessWidget {
         GestureDetector(
           behavior: HitTestBehavior.opaque,
           onLongPress: () => _openSettingsPage(context),
+          onVerticalDragEnd: (details) {
+            if (details.primaryVelocity != null && details.primaryVelocity! < 0) {
+              _openDrawerPage(context);
+            }
+          },
           child: Container(color: Colors.transparent),
         ),
         GestureDetector(
