@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:return_zero/core/constants/app_typography.dart';
+import 'package:return_zero/core/theme/app_typography.dart';
+import 'package:return_zero/features/home/presentation/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         textTheme: AppTypography.textTheme,
         useMaterial3: true,
       ),
-      home: const Placeholder(),
+      home: HomePage(),
     );
   }
 }
