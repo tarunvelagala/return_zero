@@ -37,4 +37,17 @@ void main() {
     expect(widget.rowCrossAxisAlignment, equals(CrossAxisAlignment.baseline));
     expect(widget.rowTextBaseline, equals(TextBaseline.alphabetic));
   });
+
+  testWidgets('HomePage long-press opens SettingsPage', (WidgetTester tester) async {
+    await tester.pumpWidget(const ReturnZero());
+    await tester.pumpAndSettle();
+
+    final gestureFinder = find.byType(GestureDetector).first;
+    expect(gestureFinder, findsOneWidget);
+
+    await tester.longPress(gestureFinder);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Settings Page'), findsOneWidget);
+  });
 }
