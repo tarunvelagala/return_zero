@@ -5,17 +5,15 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:return_zero/main.dart';
+import 'package:return_zero/app/return_zero.dart';
 
 void main() {
   testWidgets('Home page smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const ReturnZero());
 
-    // Verify that our home page shows a Placeholder.
-    expect(find.byType(Placeholder), findsOneWidget);
+    // Verify that our home page shows the pinned apps text.
+    expect(find.text('PinnedApps'), findsOneWidget);
   });
 }
