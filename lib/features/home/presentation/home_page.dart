@@ -33,16 +33,20 @@ class HomePage extends StatelessWidget {
           onLongPress: () => _openSettingsPage(context),
           child: Container(color: Colors.transparent),
         ),
-        ResponsiveRowColumn(
-          layout: ResponsiveRowColumnType.COLUMN,
-          children: [
-            ResponsiveRowColumnItem(columnFlex: 1, child: HeaderWidget()),
-            ResponsiveRowColumnItem(columnFlex: 2, child: PinnedAppsWidget()),
-            ResponsiveRowColumnItem(
-              columnFlex: 1,
-              child: InstructionsWidget(),
-            ),
-          ],
+        GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          child: ResponsiveRowColumn(
+            layout: ResponsiveRowColumnType.COLUMN,
+            children: [
+              ResponsiveRowColumnItem(columnFlex: 1, columnFit: FlexFit.tight, child: HeaderWidget()),
+              ResponsiveRowColumnItem(columnFlex: 2, columnFit: FlexFit.tight, child: PinnedAppsWidget()),
+              ResponsiveRowColumnItem(
+                columnFlex: 1,
+                columnFit: FlexFit.tight,
+                child: InstructionsWidget(),
+              ),
+            ],
+          ),
         ),
       ],
     );

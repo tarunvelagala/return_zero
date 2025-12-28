@@ -5,6 +5,6 @@ class InstructionsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('InstructionsWidget');
+    return Center(child: Text('InstructionsWidget'));
   }
 }

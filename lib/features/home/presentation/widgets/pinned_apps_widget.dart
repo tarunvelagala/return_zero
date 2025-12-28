@@ -5,6 +5,6 @@ class PinnedAppsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('PinnedAppsWidget');
+    return Center(child: Text('PinnedAppsWidget'));
   }
 }
