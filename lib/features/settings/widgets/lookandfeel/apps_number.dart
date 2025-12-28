@@ -11,7 +11,7 @@ class AppsNumber extends StatelessWidget {
       label: 'Apps on Home Screen',
       control: Text(
         '5',
-        style: AppTypography.bodySmall(
+        style: AppTypography.bodyMedium(
           context,
           scaleFactor: AppTypography.defaultScaleFactor,
         ),

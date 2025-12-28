@@ -11,7 +11,7 @@ class EnableUsageStats extends StatelessWidget {
       label: 'Enable Usage Stats',
       control: Text(
         'Off',
-        style: AppTypography.bodySmall(
+        style: AppTypography.bodyMedium(
           context,
           scaleFactor: AppTypography.defaultScaleFactor,
         ),

@@ -15,7 +15,7 @@ class ThemeModeWidget extends ConsumerWidget {
       label: 'Theme Mode',
       control: Text(
         currentThemeMode == ThemeMode.light ? 'Light' : 'Dark',
-        style: AppTypography.bodySmall(
+        style: AppTypography.bodyMedium(
           context,
           scaleFactor: AppTypography.defaultScaleFactor,
         ),

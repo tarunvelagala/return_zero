@@ -16,7 +16,7 @@ class _AppAlignmentState extends State<AppAlignment> {
       label: 'App Alignment',
       control: Text(
         'Center',
-        style: AppTypography.bodySmall(
+        style: AppTypography.bodyMedium(
           context,
           scaleFactor: AppTypography.defaultScaleFactor,
         ),
