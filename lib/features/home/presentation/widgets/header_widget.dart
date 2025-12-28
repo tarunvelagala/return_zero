@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:return_zero/features/home/presentation/stats_widget.dart';
-import 'package:return_zero/features/home/presentation/time_date_widget.dart';
+import 'package:return_zero/features/home/presentation/widgets/stats_widget.dart';
+import 'package:return_zero/features/home/presentation/widgets/time_date_widget.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});

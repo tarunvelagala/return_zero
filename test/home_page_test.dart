@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:return_zero/app/return_zero.dart';
-import 'package:return_zero/features/home/presentation/header_widget.dart';
-import 'package:return_zero/features/home/presentation/time_date_widget.dart';
-import 'package:return_zero/features/home/presentation/stats_widget.dart';
+import 'package:return_zero/features/home/presentation/widgets/header_widget.dart';
+import 'package:return_zero/features/home/presentation/widgets/time_date_widget.dart';
+import 'package:return_zero/features/home/presentation/widgets/stats_widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
