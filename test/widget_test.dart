@@ -13,7 +13,10 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const ReturnZero());
 
+    // Verify that our home page shows the instructions apps text.
+    expect(find.text('InstructionsWidget'), findsOneWidget);
+
     // Verify that our home page shows the pinned apps text.
-    expect(find.text('PinnedApps'), findsOneWidget);
+    expect(find.text('PinnedAppsWidget'), findsOneWidget);
   });
 }

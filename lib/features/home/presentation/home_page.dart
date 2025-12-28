@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:return_zero/features/home/presentation/header_widget.dart';
-import 'package:return_zero/features/home/presentation/onboarding_instructions.dart';
-import 'package:return_zero/features/home/presentation/pinned_apps.dart';
+import 'package:return_zero/features/home/presentation/instructions_widget.dart';
+import 'package:return_zero/features/home/presentation/pinned_apps_widget.dart';
 import 'package:return_zero/features/settings/settings_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,10 +37,10 @@ class HomePage extends StatelessWidget {
           layout: ResponsiveRowColumnType.COLUMN,
           children: [
             ResponsiveRowColumnItem(columnFlex: 1, child: HeaderWidget()),
-            ResponsiveRowColumnItem(columnFlex: 2, child: PinnedApps()),
+            ResponsiveRowColumnItem(columnFlex: 2, child: PinnedAppsWidget()),
             ResponsiveRowColumnItem(
               columnFlex: 1,
-              child: OnboardingInstructions(),
+              child: InstructionsWidget(),
             ),
           ],
         ),

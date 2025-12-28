@@ -10,10 +10,11 @@ void main() {
   testWidgets('Home page shows header, pinned apps and onboarding',
       (WidgetTester tester) async {
     await tester.pumpWidget(const ReturnZero());
+    await tester.pumpAndSettle();
 
     expect(find.byType(HeaderWidget), findsOneWidget);
-    expect(find.text('PinnedApps'), findsOneWidget);
-    expect(find.text('OnboardingInstructions'), findsOneWidget);
+    expect(find.text('PinnedAppsWidget'), findsOneWidget);
+    expect(find.text('InstructionsWidget'), findsOneWidget);
   });
 
   testWidgets('Header contains TimeDateWidget and StatsWidget',
@@ -44,6 +45,10 @@ void main() {
 
     final gestureFinder = find.byType(GestureDetector).first;
     expect(gestureFinder, findsOneWidget);
+
+    // Ensure the gesture detector covers the screen and is opaque to hits
+    final gestureWidget = tester.widget<GestureDetector>(gestureFinder);
+    expect(gestureWidget.behavior, equals(HitTestBehavior.opaque));
 
     await tester.longPress(gestureFinder);
     await tester.pumpAndSettle();
