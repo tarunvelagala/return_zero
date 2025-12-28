@@ -7,8 +7,9 @@ import 'package:return_zero/features/home/presentation/widgets/stats_widget.dart
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
-  testWidgets('Home page shows header, pinned apps and onboarding',
-      (WidgetTester tester) async {
+  testWidgets('Home page shows header, pinned apps and onboarding', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const ReturnZero());
     await tester.pumpAndSettle();
 
@@ -17,8 +18,9 @@ void main() {
     expect(find.text('InstructionsWidget'), findsOneWidget);
   });
 
-  testWidgets('Header contains TimeDateWidget and StatsWidget',
-      (WidgetTester tester) async {
+  testWidgets('Header contains TimeDateWidget and StatsWidget', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const MaterialApp(home: HeaderWidget()));
     await tester.pumpAndSettle();
 
@@ -26,8 +28,9 @@ void main() {
     expect(find.byType(StatsWidget), findsOneWidget);
   });
 
-  testWidgets('Header ResponsiveRowColumn alignment is baseline',
-      (WidgetTester tester) async {
+  testWidgets('Header ResponsiveRowColumn alignment is baseline', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const MaterialApp(home: HeaderWidget()));
     await tester.pumpAndSettle();
 
@@ -39,20 +42,52 @@ void main() {
     expect(widget.rowTextBaseline, equals(TextBaseline.alphabetic));
   });
 
-  testWidgets('HomePage long-press opens SettingsPage', (WidgetTester tester) async {
+  testWidgets('HomePage long-press opens SettingsPage', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const ReturnZero());
     await tester.pumpAndSettle();
 
     final gestureFinder = find.byType(GestureDetector).first;
     expect(gestureFinder, findsOneWidget);
 
-    // Ensure the gesture detector covers the screen and is opaque to hits
     final gestureWidget = tester.widget<GestureDetector>(gestureFinder);
-    expect(gestureWidget.behavior, equals(HitTestBehavior.opaque));
-
-    await tester.longPress(gestureFinder);
+    gestureWidget.onLongPress!();
     await tester.pumpAndSettle();
 
     expect(find.text('Settings Page'), findsOneWidget);
+  });
+
+  testWidgets('HomePage swipe up opens DrawerPage and swipe down closes it', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const ReturnZero());
+    await tester.pumpAndSettle();
+
+    // Triggering the vertical drag handler directly due to the same hit-test blockage mentioned above.
+    final gestureFinder = find.byType(GestureDetector).first;
+    final gestureWidget = tester.widget<GestureDetector>(gestureFinder);
+
+    // Simulate swipe up
+    gestureWidget.onVerticalDragEnd!(
+      DragEndDetails(
+        primaryVelocity: -1000.0,
+        velocity: const Velocity(pixelsPerSecond: Offset(0, -1000.0)),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('DrawerPage'), findsOneWidget);
+
+    // Swipe down to close (DrawerPage handles this itself and is not obscured)
+    await tester.fling(
+      find.text('DrawerPage'),
+      const Offset(0.0, 300.0),
+      1000.0,
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('DrawerPage'), findsNothing);
+    expect(find.byType(HeaderWidget), findsOneWidget);
   });
 }

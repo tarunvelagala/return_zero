@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:return_zero/core/theme/app_theme.dart';
 import 'package:return_zero/features/home/presentation/home_page.dart';
 
 class ReturnZero extends StatelessWidget {
@@ -10,10 +11,10 @@ class ReturnZero extends StatelessWidget {
       title: 'Return Zero',
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const HomePage()
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      home: const HomePage(),
     );
   }
 }
