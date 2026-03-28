@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 /// and avoid magic numbers.
 class AppThemeConstants {
   // Font Sizes (Semantic Naming)
-  static const double fontSizeDisplayLarge = 100.0;
+  static const double fontSizeDisplayLarge = 72.0;
   static const double fontSizeDisplaySmall = 36.0;
   static const double fontSizeHeadlineSmall = 28.0;
   static const double fontSizeTitleLarge = 20.0;
@@ -31,4 +31,16 @@ class AppThemeConstants {
   static const double opacityHigh = 0.7;
   static const double opacityMedium = 0.6;
   static const double opacityLow = 0.4;
+
+  // Spacing
+  static const double spacingXxs = 4.0;
+  static const double spacingXs = 8.0;
+  static const double spacingS = 12.0;
+  static const double spacingM = 20.0;
+  static const double spacingL = 32.0;
+
+  // Screen padding
+  static const double paddingScreenHorizontal = 28.0;
+  static const double paddingScreenTop = 56.0;
+  static const double paddingScreenBottom = 40.0;
 }

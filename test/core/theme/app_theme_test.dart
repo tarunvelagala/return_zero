@@ -51,7 +51,7 @@ void main() {
   group('AppThemeConstants Tests', () {
     test('Constants should have expected numeric values', () {
       // These tests are useful to catch accidental changes to the tokens
-      expect(AppThemeConstants.fontSizeDisplayLarge, 100.0);
+      expect(AppThemeConstants.fontSizeDisplayLarge, 72.0);
       expect(AppThemeConstants.fontSizeLabelSmall, 12.0);
       expect(AppThemeConstants.opacityLow, 0.4);
     });
